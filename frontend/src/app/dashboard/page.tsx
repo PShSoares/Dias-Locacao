@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "../../services/api";
 import {
@@ -137,6 +138,20 @@ export default function DashboardPage() {
               Clientes, veiculos e regras iniciais de locacao entram a partir
               daqui.
             </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Link
+                className="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white"
+                href="/dashboard/clients"
+              >
+                Clientes
+              </Link>
+              <Link
+                className="rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-950"
+                href="/dashboard/vehicles"
+              >
+                Veiculos
+              </Link>
+            </div>
           </article>
         </section>
       </div>
