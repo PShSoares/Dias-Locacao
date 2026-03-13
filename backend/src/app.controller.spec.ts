@@ -14,9 +14,13 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('health', () => {
+    it('should return backend health payload', () => {
+      const result = appController.getHealth();
+
+      expect(result.status).toBe('ok');
+      expect(result.service).toBe('dias-locacao-backend');
+      expect(result.timestamp).toEqual(expect.any(String));
     });
   });
 });

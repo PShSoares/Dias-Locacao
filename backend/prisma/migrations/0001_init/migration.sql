@@ -40,6 +40,9 @@ CREATE TABLE "companies" (
     CONSTRAINT "companies_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "companies_document_key" ON "companies"("document");
+
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
