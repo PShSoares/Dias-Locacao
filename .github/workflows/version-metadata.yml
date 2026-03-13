@@ -1,0 +1,29 @@
+name: version-metadata
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate version metadata
+        id: version
+        run: |
+          chmod +x scripts/build-version.sh
+          scripts/build-version.sh > version.env
+          cat version.env
+
+      - name: Upload version metadata artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-metadata-${{ github.sha }}
+          path: version.env
